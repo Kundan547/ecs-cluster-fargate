@@ -24,5 +24,4 @@ This project provisions an AWS ECS Cluster using Fargate launch type, with an Ap
    terraform init
    terraform validate
    terraform apply 
-   '''sh
    
