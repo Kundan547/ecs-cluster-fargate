@@ -1,0 +1,23 @@
+# Step 1: Create the S3 Bucket
+
+aws s3api create-bucket \
+  --bucket my-terraform-state-bobby \
+  --region us-east-1
+
+# Step 2: Enable Bucket Versioning
+
+aws s3api put-bucket-versioning \
+  --bucket my-terraform-state-bobby \
+  --versioning-configuration Status=Enabled
+
+# Step 3: Enable Server-Side Encryption (AES256)
+
+aws s3api put-bucket-encryption \
+  --bucket my-terraform-state-bobby \
+  --server-side-encryption-configuration '{
+    "Rules": [{
+      "ApplyServerSideEncryptionByDefault": {
+        "SSEAlgorithm": "AES256"
+      }
+    }]
+  }'
